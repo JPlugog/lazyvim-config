@@ -192,6 +192,29 @@ data
 
 ---
 
+## 🔄 Clonar en otro equipo
+
+**Instalación limpia:**
+```bash
+git clone https://github.com/JPlugog/lazyvim-config.git ~/.config/nvim
+```
+
+**Si ya tiene neovim/LazyVim configurado:**
+```bash
+rm -rf ~/.config/nvim
+git clone https://github.com/JPlugog/lazyvim-config.git ~/.config/nvim
+```
+
+Al abrir neovim, Lazy detecta `lazy-lock.json` e instala los plugins automáticamente.
+
+**Consideraciones:**
+- La config es agnóstica al SO (funciona en macOS y Linux sin cambios)
+- La ruta `~/.config/nvim` es estándar en ambos sistemas
+- Plugins de lenguajes específicos (ej: Swift) se ignoran si las dependencias no están presentes
+- Instalar dependencias externas: `ripgrep`, `fd`, `node`, `gcc`/`clang` (para treesitter)
+
+---
+
 ## 💡 Tips
 
 - Usa `:LazyExtras` para ver/activar más extras sin tocar archivos.
