@@ -138,19 +138,19 @@ Estos vienen del [starter template](https://github.com/LazyVim/starter) y no se 
 
 ---
 
-## 🚀 Guía de Portabilidad
+## 🚀 Instalación / Reconfiguración
 
-### Instalación en una máquina nueva
-
+**Instalación limpia:**
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/TU_USUARIO/nvim-config.git ~/.config/nvim
-
-# 2. Abrir Neovim (lazy.nvim se instala solo)
+git clone https://github.com/JPlugog/lazyvim-config.git ~/.config/nvim
 nvim
+# Lazy instala plugins automáticamente. Mason instala LSPs/DAPs.
+```
 
-# 3. Esperar a que Lazy instale todos los plugins
-# 4. Mason instalará automáticamente los LSPs/DAPs necesarios
+**Si ya tiene neovim/LazyVim configurado:**
+```bash
+rm -rf ~/.config/nvim
+git clone https://github.com/JPlugog/lazyvim-config.git ~/.config/nvim
 ```
 
 ### Requisitos del sistema
@@ -165,6 +165,10 @@ nvim
 | Xcode CLI Tools | Swift (sourcekit-lsp) |
 | ripgrep | Búsqueda rápida (Telescope) |
 | fd | File finder |
+
+**Consideraciones:**
+- Config agnóstica al SO (macOS y Linux sin cambios). Ruta `~/.config/nvim` estándar en ambos.
+- Plugins de lenguajes específicos (ej: Swift/Xcode) se ignoran si las dependencias no están presentes.
 
 ### Qué se sube a Git
 
@@ -189,29 +193,6 @@ data
 ## 📅 Fecha de creación
 
 **26 de Mayo, 2026** — Neovim 0.10+ / LazyVim v8
-
----
-
-## 🔄 Clonar en otro equipo
-
-**Instalación limpia:**
-```bash
-git clone https://github.com/JPlugog/lazyvim-config.git ~/.config/nvim
-```
-
-**Si ya tiene neovim/LazyVim configurado:**
-```bash
-rm -rf ~/.config/nvim
-git clone https://github.com/JPlugog/lazyvim-config.git ~/.config/nvim
-```
-
-Al abrir neovim, Lazy detecta `lazy-lock.json` e instala los plugins automáticamente.
-
-**Consideraciones:**
-- La config es agnóstica al SO (funciona en macOS y Linux sin cambios)
-- La ruta `~/.config/nvim` es estándar en ambos sistemas
-- Plugins de lenguajes específicos (ej: Swift) se ignoran si las dependencias no están presentes
-- Instalar dependencias externas: `ripgrep`, `fd`, `node`, `gcc`/`clang` (para treesitter)
 
 ---
 
