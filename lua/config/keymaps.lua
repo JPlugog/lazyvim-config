@@ -26,6 +26,9 @@ map("n", "<C-S-Right>", ":vertical resize +2<CR>", { desc = "Resize right" })
 map("n", "<C-S-Left>", ":vertical resize -2<CR>", { desc = "Resize left" })
 map("n", "gD", ":lua vim.lsp.buf.definition()<CR>", { desc = "Go to Definition" })
 
+-- Salir de modo terminal con doble Escape
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
+
 -------------------------------------------------------------------------------
 -- SECCIÓN DE TERMINAL
 -------------------------------------------------------------------------------
