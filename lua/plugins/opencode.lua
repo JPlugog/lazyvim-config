@@ -11,8 +11,22 @@ return {
       { "<leader>on", function() require("opencode").command("session.new") end, desc = "New Session" },
       { "<leader>oi", function() require("opencode").command("session.interrupt") end, desc = "Interrupt Session" },
       { "<leader>om", function() require("opencode").command("agent.cycle") end, desc = "Cycle Agent/Mode" },
-      { "<PageUp>", function() require("opencode").command("session.half.page.up") end, desc = "Scroll OpenCode up" },
-      { "<PageDown>", function() require("opencode").command("session.half.page.down") end, desc = "Scroll OpenCode down" },
+      { "<PageUp>", function()
+        local bt = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+        if bt == "terminal" then
+          require("opencode").command("session.half.page.up")
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-b>", true, false, true), "n", false)
+        end
+      end, desc = "Scroll up (OpenCode/buffer)" },
+      { "<PageDown>", function()
+        local bt = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+        if bt == "terminal" then
+          require("opencode").command("session.half.page.down")
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-f>", true, false, true), "n", false)
+        end
+      end, desc = "Scroll down (OpenCode/buffer)" },
       { "go", function() return require("opencode").operator("@this ") end, mode = { "n", "x" }, desc = "Append range to OpenCode", expr = true },
       { "goo", function() return require("opencode").operator("@this ") .. "_" end, desc = "Append line to OpenCode", expr = true },
     },
